@@ -1,0 +1,22 @@
+{
+  "name": "ptr-core",
+  "version": "0.0.1",
+  "description": "Panther FE core",
+  "keywords": [
+    "panther",
+    "gisat"
+  ],
+  "homepage": "https://github.com/gisat/core",
+  "main": "src/index.js",
+  "module": "src/index.js",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gisat/core"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "build": "webpack"
+  }
+}
