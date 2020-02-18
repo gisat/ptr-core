@@ -1,3 +1,5 @@
-export default {
+import Context from './context';
 
+export {
+    Context
 }
