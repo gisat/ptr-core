@@ -1,15 +1,16 @@
 import React from "react";
 
-let contexts = {};
+const Context = () => {
 
-let createContext = (key, initialValue) => {
-    contexts[key] = React.createContext(initialValue);
-    return contexts[key];
+    let contexts = {};
+
+    let createContext = key => React.createContext();
+    let getContext = key => contexts[key] || createContext(key);
+
+    return {
+
+    }
 };
 
-let getContext = (key, initialValue) => contexts[key] || createContext(key, initialValue);
-
-export default {
-    getContext
-};
+export default Context();
 
