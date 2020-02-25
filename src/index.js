@@ -1,6 +1,7 @@
 import configDefaults from './config/defaults';
 import Context from './context';
 import HoverHandler from './components/HoverHandler';
+import mapConstants from './constants/Map';
 import Popup from './components/HoverHandler/Popup';
 import Test from './components/Test';
 
@@ -11,6 +12,7 @@ export {
     configDefaults,
     Context,
     HoverHandler,
+    mapConstants,
     Popup,
     Test,
 
