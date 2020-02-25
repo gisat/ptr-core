@@ -1,6 +1,6 @@
 {
   "name": "@gisatcz/ptr-core",
-  "version": "0.0.6-pre-alpha",
+  "version": "1.0.0-alpha",
   "description": "Panther FE core",
   "keywords": [
     "panther",
@@ -34,7 +34,7 @@
     "webpack-cli": "3.3.11"
   },
   "scripts": {
-    "build": "webpack",
-    "start": "webpack --watch"
+    "build": "webpack --mode=production",
+    "start": "webpack --watch --mode=development --devtool=eval-source-map"
   }
 }
