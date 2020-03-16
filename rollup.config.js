@@ -37,7 +37,9 @@ export default {
     commonjs({
         include: 'node_modules/**',
     }),
-    sass(),
+    sass({
+      output: true,
+    }),
     filesize(),
   ]
 };
