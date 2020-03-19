@@ -7,13 +7,12 @@
     "gisat"
   ],
   "homepage": "https://github.com/gisat/core",
-  "style": "dist/index.css",
+  "style": "dist/style.css",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "files": [
     "dist",
-    "lib",
-    "src"
+    "lib"
   ],
   "license": "Apache-2.0",
   "repository": {
@@ -23,8 +22,10 @@
   "dependencies": {
     "classnames": "2.2.6",
     "lodash": "4.17.15",
+    "postcss-url": "^8.0.0",
     "prop-types": "15.7.2",
-    "react": "16.12.0"
+    "react": "16.12.0",
+    "rollup-plugin-postcss": "^2.5.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
@@ -59,8 +60,9 @@
     "build": "run-s clean && run-p build:es build:cjs build:lib:es",
     "build:es": "cross-env NODE_ENV=es rollup -c",
     "build:cjs": "cross-env NODE_ENV=cjs rollup -c",
-    "build:lib:es": "npm-run-all build:babel:lib:es copy:stylesheets",
+    "build:lib:es": "npm-run-all build:babel:lib:es copy:stylesheets copy:assets",
     "build:babel:lib:es": "cross-env BABEL_ENV=es babel src -d lib",
-    "copy:stylesheets": "node ./build/copy-stylesheets.js"
+    "copy:stylesheets": "node ./build/copy-stylesheets.js",
+    "copy:assets": "node ./build/copy-assets.js"
   }
 }
