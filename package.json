@@ -1,6 +1,6 @@
 {
   "name": "@gisatcz/ptr-core",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Panther FE core",
   "keywords": [
     "panther",
@@ -53,7 +53,7 @@
   },
   "scripts": {
     "clean": "rimraf dist",
-    "start": "run-s clean && run-p start:es start:cjs start:lib:es",
+    "start": "run-s clean && run-p start:es start:cjs start:lib:es copy:stylesheets",
     "start:lib:es": "cross-env BABEL_ENV=es babel --watch src -d lib --verbose",
     "start:cjs": "cross-env NODE_ENV=cjs rollup -c -w",
     "start:es": "cross-env NODE_ENV=es rollup -c -w",
