@@ -47,7 +47,7 @@ class HoverHandler extends React.PureComponent {
 		}
 
 		// check if coordinates has been changed
-		if (options.popup.x && options.popup.y) {
+		if (options && options.popup && options.popup.x && options.popup.y) {
 			if (this.state.x !== options.popup.x || this.state.y !== options.popup.y) {
 				coordChanged = true;
 				update.x = options.popup.x;
@@ -64,7 +64,7 @@ class HoverHandler extends React.PureComponent {
 			update.fidColumnName = options.popup.fidColumnName;
 		} else {
 			update.hoveredItems = [...this.state.hoveredItems, ...hoveredItems];
-			if (options.popup.data && options.popup.data.length) {
+			if (options && options.popup && options.popup.data && options.popup.data.length) {
 				update.data = [...this.state.data, ...options.popup.data];
 				update.fidColumnName = options.popup.fidColumnName;
 			}
