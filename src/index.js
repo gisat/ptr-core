@@ -10,8 +10,8 @@ import './styles/base.scss';
 // TODO move somewhere else
 import {getTootlipPosition} from './components/HoverHandler/position';
 
-export * from './ssr';
-export * from './ssr-server';
+export * from './ssr/index';
+export * from './ssr/server';
 
 export {
     configDefaults,
