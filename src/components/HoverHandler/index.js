@@ -4,7 +4,7 @@ import _ from 'lodash';
 
 import Popup from "./Popup";
 
-import Context from '../../context';
+import Context from '@gisatcz/cross-package-react-context';
 const HoverContext = Context.getContext('HoverContext');
 
 class HoverHandler extends React.PureComponent {

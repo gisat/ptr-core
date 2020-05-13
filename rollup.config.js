@@ -2,7 +2,8 @@ import babel from "rollup-plugin-babel";
 import commonjs from "@rollup/plugin-commonjs";
 import filesize from "rollup-plugin-filesize";
 import postcss from 'rollup-plugin-postcss';
-import postcssUrl from './build/plugins/postcssUrl'
+import postcssUrl from './build/plugins/postcssUrl';
+import alias from "@rollup/plugin-alias";
 
 const env = process.env.NODE_ENV;
 const pkg = require("./package.json");
@@ -30,6 +31,9 @@ export default {
     'react-dom/server',
     'prop-types',
     'classnames',
+    '@gisatcz/cross-package-react-context',
+    'postcss-url',
+    'rollup-plugin-postcss',
     ...lodashExternal
   ],
   output: {
@@ -63,5 +67,11 @@ export default {
       ]
     }),
     filesize(),
+    // TODO figure out dev and prod version
+    // alias({
+    //   entries: [
+    //     { find: '@gisatcz/cross-package-react-context', replacement: 'C:/Users/pvlach/DATA/cross-package-react-context' }
+    //   ]
+    // })
   ]
 };
