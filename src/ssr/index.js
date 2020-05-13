@@ -5,6 +5,21 @@ const defaultOptions = {
 	timeout: 10000,
 };
 
+/**
+ * Returns counter of async requests.
+ *
+ * When request is fired, `onRequest()` should be called.
+ * When request finishes, `onResponse()` should be called.
+ *
+ * `pendingRequests()` returns number of pending requests.
+ *
+ * `createReadyP()` returns promise that resolves once there are no pending requests or rejects on timeout.
+ *
+ * @param {Object} object
+ * @param {number=} object.timeout Waiting for promise to resolve
+ *
+ * @returns {Object}
+ */
 export function createRequestCounter(options) {
 	const {timeout} = Object.assign({}, defaultOptions, options);
 
