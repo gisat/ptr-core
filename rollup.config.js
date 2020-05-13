@@ -26,6 +26,8 @@ export default {
   input: "src/index.js",
   external: [
     'react',
+    'react-helmet',
+    'react-dom/server',
     'prop-types',
     'classnames',
     ...lodashExternal

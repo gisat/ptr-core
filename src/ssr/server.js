@@ -2,11 +2,11 @@ import {renderToString} from 'react-dom/server';
 import {Helmet} from 'react-helmet';
 
 const createRenderFnDefaults = {
-    maxRetries: 5,
-    createDataFn: (el) => ({
-        html: renderToString(el),
-        helmet: Helmet.renderStatic(),
-    }),
+	maxRetries: 5,
+	createDataFn: (el) => ({
+		html: renderToString(el),
+		helmet: Helmet.renderStatic(),
+	}),
 };
 
 /**
@@ -22,36 +22,36 @@ const createRenderFnDefaults = {
  * @returns Function that returns `Promise` resolving to data returned by `createDataFn`.
  */
 export function createRenderFn(options) {
-    const {
-        maxRetries,
-        createDataFn,
-        createElFn,
-        requestCounter,
-    } = Object.assign({}, createRenderFnDefaults, options);
+	const {
+		maxRetries,
+		createDataFn,
+		createElFn,
+		requestCounter,
+	} = Object.assign({}, createRenderFnDefaults, options);
 
-    let remainingRetries = maxRetries;
-    const renderFn = function () {
-        const el = createElFn();
-        if (el == null) {
-            return;
-        }
+	let remainingRetries = maxRetries;
+	const renderFn = function () {
+		const el = createElFn();
+		if (el == null) {
+			return;
+		}
 
-        const data = createDataFn(el);
+		const data = createDataFn(el);
 
-        if (remainingRetries <= 0) {
-            return data; // let's not keep retrying indefinitely
-        }
+		if (remainingRetries <= 0) {
+			return data; // let's not keep retrying indefinitely
+		}
 
-        if (requestCounter.pendingRequests() !== 0) {
-            return requestCounter.createReadyP().then(() => {
-                remainingRetries -= 1;
+		if (requestCounter.pendingRequests() !== 0) {
+			return requestCounter.createReadyP().then(() => {
+				remainingRetries -= 1;
 
-                return renderFn();
-            });
-        }
+				return renderFn();
+			});
+		}
 
-        return data;
-    };
+		return Promise.resolve(data);
+	};
 
-    return renderFn;
+	return renderFn;
 }

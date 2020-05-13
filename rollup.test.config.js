@@ -7,24 +7,32 @@ const env = process.env.NODE_ENV;
 const lodashExternal = ['lodash/isEmpty'];
 
 export default {
-    input: 'tests/**/*-test.js',
-    external: ['react', 'prop-types', 'classnames', 'chai', ...lodashExternal],
-    output: {
-        file: 'build/bundle-tests.js',
-        format: env,
-        globals: {
-            // 'lodash/random': '_.random'
-        },
-        exports: 'named' /** Disable warning for default imports */,
-        sourcemap: true,
-    },
-    plugins: [
-        multi(),
-        babel({
-            plugins: ['lodash'],
-        }),
-        commonjs({
-            include: 'node_modules/**',
-        }),
-    ],
+	input: 'tests/**/*-test.js',
+	external: [
+		'react',
+		'react-helmet',
+		'react-dom/server',
+		'prop-types',
+		'classnames',
+		'chai',
+		...lodashExternal,
+	],
+	output: {
+		file: 'build/bundle-tests.js',
+		format: env,
+		globals: {
+			// 'lodash/random': '_.random'
+		},
+		exports: 'named' /** Disable warning for default imports */,
+		sourcemap: true,
+	},
+	plugins: [
+		multi(),
+		babel({
+			plugins: ['lodash'],
+		}),
+		commonjs({
+			include: 'node_modules/**',
+		}),
+	],
 };
