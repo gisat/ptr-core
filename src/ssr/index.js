@@ -1,56 +1,62 @@
 export const isServer =
-    process && process.release && process.release.name === 'node';
+	process && process.release && process.release.name === 'node';
 
-export function createRequestCounter() {
-    let v = 0;
-    let p = null;
-    let resolve = function () {};
-    let reject = function () {};
+const defaultOptions = {
+	timeout: 10000,
+};
 
-    const modify = (d) => {
-        v += d;
-        if (v === 0) {
-            p = null;
-            resolve();
-        }
-    };
+export function createRequestCounter(options) {
+	const {timeout} = Object.assign({}, defaultOptions, options);
 
-    return {
-        onRequest: function () {
-            modify(+1);
-        },
-        onResponse: function () {
-            modify(-1);
-        },
-        pendingRequests: function () {
-            return v;
-        },
-        /**
-         * Returns promise that resolves once there are no pending requests
-         * or rejects if internal timeout is reached.
-         */
-        createReadyP: function () {
-            if (p != null) {
-                return p;
-            }
+	let v = 0;
+	let p = null;
+	let resolve = function () {};
+	let reject = function () {};
 
-            if (v === 0) {
-                return Promise.resolve();
-            }
+	const modify = (d) => {
+		v += d;
+		if (v === 0) {
+			p = null;
+			resolve();
+		}
+	};
 
-            p = new Promise((_resolve, _reject) => {
-                resolve = _resolve;
-                reject = _reject;
-            });
+	return {
+		onRequest: function () {
+			modify(+1);
+		},
+		onResponse: function () {
+			modify(-1);
+		},
+		pendingRequests: function () {
+			return v;
+		},
+		/**
+		 * Returns promise that resolves once there are no pending requests
+		 * or rejects if internal timeout is reached.
+		 */
+		createReadyP: function () {
+			if (p != null) {
+				return p;
+			}
 
-            const rejectCurrent = reject;
+			if (v === 0) {
+				return Promise.resolve();
+			}
 
-            // do no block indefinitely if requests are waiting too long or there is a bug somewhere
-            setTimeout(() => rejectCurrent(), 10000);
+			p = new Promise((_resolve, _reject) => {
+				resolve = _resolve;
+				reject = _reject;
+			});
 
-            return p;
-        },
-    };
+			const rejectCurrent = reject;
+
+			// do no block indefinitely if requests are waiting too long or there is a bug somewhere
+			setTimeout(() => rejectCurrent(), timeout);
+
+			return p;
+		},
+	};
 }
 
 /**
@@ -62,17 +68,17 @@ export function createRequestCounter() {
  * or we have to wait for some data.
  */
 export function createAsyncMiddleware(requestCounter) {
-    return function (store) {
-        return function (next) {
-            return function (action) {
-                const res = next(action);
-                if (res instanceof Promise) {
-                    requestCounter.onRequest();
-                    res.finally(() => requestCounter.onResponse());
-                }
+	return function (store) {
+		return function (next) {
+			return function (action) {
+				const res = next(action);
+				if (res instanceof Promise) {
+					requestCounter.onRequest();
+					res.finally(() => requestCounter.onResponse());
+				}
 
-                return res;
-            };
-        };
-    };
+				return res;
+			};
+		};
+	};
 }
