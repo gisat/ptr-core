@@ -1,3 +1,15 @@
+# v1.3.5 (Thu Jul 23 2020)
+
+#### 🐾 Patch
+
+- Bump lodash from 4.17.15 to 4.17.19 [#9](https://github.com/gisat-panther/ptr-core/pull/9) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+#### Authors: 1
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+
+---
+
 # v1.3.4 (Wed Jul 15 2020)
 
 #### 🐾 Patch
