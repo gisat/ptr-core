@@ -1,3 +1,15 @@
+# v1.3.8 (Thu Sep 10 2020)
+
+#### 🐾 Patch
+
+- Move react-dom from devDependencies to dependencies [#12](https://github.com/gisat-panther/ptr-core/pull/12) ([@vdubr](https://github.com/vdubr))
+
+#### Authors: 1
+
+- Vojtěch Dubrovský ([@vdubr](https://github.com/vdubr))
+
+---
+
 # v1.3.7 (Thu Sep 10 2020)
 
 #### 🐾 Patch
