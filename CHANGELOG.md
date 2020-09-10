@@ -1,3 +1,15 @@
+# v1.3.6 (Thu Sep 10 2020)
+
+#### 🐾 Patch
+
+- Feature/map constants [#10](https://github.com/gisat-panther/ptr-core/pull/10) ([@vdubr](https://github.com/vdubr))
+
+#### Authors: 1
+
+- Vojtěch Dubrovský ([@vdubr](https://github.com/vdubr))
+
+---
+
 # v1.3.5 (Thu Jul 23 2020)
 
 #### 🐾 Patch
