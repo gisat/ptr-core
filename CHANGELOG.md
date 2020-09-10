@@ -1,3 +1,15 @@
+# v1.3.7 (Thu Sep 10 2020)
+
+#### 🐾 Patch
+
+- Remove react-dom from peerDependencies [#11](https://github.com/gisat-panther/ptr-core/pull/11) ([@vdubr](https://github.com/vdubr))
+
+#### Authors: 1
+
+- Vojtěch Dubrovský ([@vdubr](https://github.com/vdubr))
+
+---
+
 # v1.3.6 (Thu Sep 10 2020)
 
 #### 🐾 Patch
