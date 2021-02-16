@@ -87,6 +87,7 @@
 		"copy:stylesheets": "node ./build/copy-stylesheets.js",
 		"copy:assets": "node ./build/copy-assets.js",
 		"test": "cross-env NODE_ENV=cjs rollup -c ./rollup.test.config.js && mocha -- --require source-map-support/register",
-		"test:watch": "npm-watch test"
+		"test:watch": "npm-watch test",
+		"format": "prettier --write ."
 	}
 }
