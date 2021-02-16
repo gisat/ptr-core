@@ -18,10 +18,10 @@
  * @returns Function that returns `Promise` resolving to data returned by `createDataFn`.
  */
 createRenderFn({
-    maxRetries,
-    createDataFn,
-    createElFn,
-    requestCounter,
+	maxRetries,
+	createDataFn,
+	createElFn,
+	requestCounter,
 });
 
 /**
@@ -56,56 +56,56 @@ createAsyncMiddleware(requestCounter);
 
 ```js
 import {createStore} from 'redux';
-import {createRenderFn, createRequestCounter, createAsyncMiddleware} from '@gisatcz/ptr-core';
+import {
+	createRenderFn,
+	createRequestCounter,
+	createAsyncMiddleware,
+} from '@gisatcz/ptr-core';
 
 function createStore() {
-    const requestCounter = createRequestCounter();
+	const requestCounter = createRequestCounter();
 
-    const store = createStore(
-        reducer,
-        {},
-        createAsyncMiddleware(requestCounter)
-    );
+	const store = createStore(reducer, {}, createAsyncMiddleware(requestCounter));
 
-    return {
-        store,
-        requestCounter,
-    }
+	return {
+		store,
+		requestCounter,
+	};
 }
 
 function handler(req, res) {
-    const {store, requestCounter} = createStore();
+	const {store, requestCounter} = createStore();
 
-    const createEl = () => {
-        /* Element returned for further processing.
-         * If in react we fire some requests, this `createEl` function will be called again
-         * thanks to `createAsyncMiddleware` that tracks requests using `requestCounter`.
-         */
-        const appEl = (
-            <UIDReset>
-                <Provider store={store}>
-                    <App />
-                </Provider>
-            </UIDReset>
-        );
+	const createEl = () => {
+		/* Element returned for further processing.
+		 * If in react we fire some requests, this `createEl` function will be called again
+		 * thanks to `createAsyncMiddleware` that tracks requests using `requestCounter`.
+		 */
+		const appEl = (
+			<UIDReset>
+				<Provider store={store}>
+					<App />
+				</Provider>
+			</UIDReset>
+		);
 
-        if (shouldRedirect) {
-            /* If we decide somewhere in react that we want to redirect user, we can
-             * just do that and return `nil` instead of the element.
-             */
-            res.redirect(301, requiredUrl);
-            return;
-        }
+		if (shouldRedirect) {
+			/* If we decide somewhere in react that we want to redirect user, we can
+			 * just do that and return `nil` instead of the element.
+			 */
+			res.redirect(301, requiredUrl);
+			return;
+		}
 
-        return appEl;
-    };
+		return appEl;
+	};
 
-    const renderFn = createRenderFn({requestCounter, createEl});
+	const renderFn = createRenderFn({requestCounter, createEl});
 
-    /* Here we just return promise of data that's gonna be send to client
-     * using `cra-universal` npm package (unless `createEl` returns `nil` in which case we
-     * handled sending data to client already)
-     */
-    return requestCounter.createReadyP().then(() => renderFn());
+	/* Here we just return promise of data that's gonna be send to client
+	 * using `cra-universal` npm package (unless `createEl` returns `nil` in which case we
+	 * handled sending data to client already)
+	 */
+	return requestCounter.createReadyP().then(() => renderFn());
 }
 ```

@@ -3,7 +3,7 @@ import {Helmet} from 'react-helmet';
 
 const createRenderFnDefaults = {
 	maxRetries: 5,
-	createDataFn: (el) => ({
+	createDataFn: el => ({
 		html: renderToString(el),
 		helmet: Helmet.renderStatic(),
 	}),
@@ -22,12 +22,11 @@ const createRenderFnDefaults = {
  * @returns Function that returns `Promise` resolving to data returned by `createDataFn`.
  */
 export function createRenderFn(options) {
-	const {
-		maxRetries,
-		createDataFn,
-		createElFn,
-		requestCounter,
-	} = Object.assign({}, createRenderFnDefaults, options);
+	const {maxRetries, createDataFn, createElFn, requestCounter} = Object.assign(
+		{},
+		createRenderFnDefaults,
+		options
+	);
 
 	let remainingRetries = maxRetries;
 	const renderFn = function () {

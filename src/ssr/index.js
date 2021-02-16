@@ -28,7 +28,7 @@ export function createRequestCounter(options) {
 	let resolve = function () {};
 	let reject = function () {};
 
-	const modify = (d) => {
+	const modify = d => {
 		v += d;
 		if (v === 0) {
 			p = null;

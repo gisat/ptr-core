@@ -17,7 +17,7 @@ describe('ssr/server', function () {
 				},
 			});
 
-			renderFn().then((data) => {
+			renderFn().then(data => {
 				assert.deepStrictEqual(data, {data: {elCount: 1}});
 			});
 		});
@@ -40,7 +40,7 @@ describe('ssr/server', function () {
 				},
 			});
 
-			renderFn().then((data) => {
+			renderFn().then(data => {
 				assert.deepStrictEqual(data, {data: {elCount: 5}});
 			});
 		});
@@ -64,7 +64,7 @@ describe('ssr/server', function () {
 				},
 			});
 
-			renderFn().then((data) => {
+			renderFn().then(data => {
 				assert.deepStrictEqual(data, {data: {elCount: 3}});
 			});
 		});

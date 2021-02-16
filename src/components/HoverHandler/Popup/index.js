@@ -15,24 +15,30 @@ const getTooltipStyle = () => {
 	const windowScrollLeft = window.document.documentElement.scrollLeft;
 	const windowHeight = window.document.documentElement.clientHeight;
 	const windowWidth = window.document.documentElement.clientWidth;
-	const windowBBox = [windowScrollTop, windowScrollLeft + windowWidth, windowScrollTop + windowHeight, windowScrollLeft];
+	const windowBBox = [
+		windowScrollTop,
+		windowScrollLeft + windowWidth,
+		windowScrollTop + windowHeight,
+		windowScrollLeft,
+	];
 
-	return getTootlipPosition('corner', ['right', 'left', 'top', 'bottom'], windowBBox, TOOLTIP_PADDING);
+	return getTootlipPosition(
+		'corner',
+		['right', 'left', 'top', 'bottom'],
+		windowBBox,
+		TOOLTIP_PADDING
+	);
 };
 
 class Popup extends React.PureComponent {
-
 	static propTypes = {
 		x: PropTypes.number,
 		y: PropTypes.number,
 		maxX: PropTypes.number,
 		content: PropTypes.element,
 		getStyle: PropTypes.func,
-		hoveredElemen: PropTypes.oneOfType([
-			PropTypes.element,
-			PropTypes.object,
-		  ]),
-		  compressed: PropTypes.bool
+		hoveredElemen: PropTypes.oneOfType([PropTypes.element, PropTypes.object]),
+		compressed: PropTypes.bool,
 	};
 
 	constructor(props) {
@@ -48,35 +54,41 @@ class Popup extends React.PureComponent {
 		let maxY = window.innerHeight + window.pageYOffset;
 		let minY = window.pageYOffset;
 		const maxWidth = maxX - 20;
-		const maxHeight = (maxY - minY) - 20;
+		const maxHeight = maxY - minY - 20;
 
 		const element = this.ref.current && this.ref.current.children[0];
 		let width = element && element.offsetWidth ? element.offsetWidth : WIDTH;
-		let height = element && element.offsetHeight ? element.offsetHeight : HEIGHT;
+		let height =
+			element && element.offsetHeight ? element.offsetHeight : HEIGHT;
 
 		let style = null;
 
-		if(typeof this.props.getStyle === 'function' && this.props.hoveredElemen) {
-			style = this.props.getStyle()(posX, posY, width, height, this.props.hoveredElemen);
+		if (typeof this.props.getStyle === 'function' && this.props.hoveredElemen) {
+			style = this.props.getStyle()(
+				posX,
+				posY,
+				width,
+				height,
+				this.props.hoveredElemen
+			);
 		} else {
 			//right corner on mouse position
 			style = getTooltipStyle()(posX, posY, width, height);
-
 		}
 
-		if (this.props.compressed || (height > maxHeight)) {	
-			width = 500;	
-		}	
+		if (this.props.compressed || height > maxHeight) {
+			width = 500;
+		}
 
-		if (width > maxWidth) {	
-			width = maxWidth;	
+		if (width > maxWidth) {
+			width = maxWidth;
 		}
 		return style;
 	}
 
 	componentDidMount() {
 		// autofocus the input on mount
-		if(true && this.ref && this.ref.current) {
+		if (true && this.ref && this.ref.current) {
 			const style = this.getStyle();
 			this.ref.current.style = style;
 		}
@@ -85,18 +97,20 @@ class Popup extends React.PureComponent {
 	render() {
 		const style = this.getStyle();
 
-		let classes = classnames("ptr-popup", {
-			'compressed': this.props.compressed
+		let classes = classnames('ptr-popup', {
+			compressed: this.props.compressed,
 		});
 
-		if(this.ref && !this.ref.current) {
+		if (this.ref && !this.ref.current) {
 			style.display = 'none';
 		}
 
 		return (
 			<div ref={this.ref}>
 				<div style={style} className={classes}>
-					{this.props.content ? React.cloneElement(this.props.content) : this.props.children}
+					{this.props.content
+						? React.cloneElement(this.props.content)
+						: this.props.children}
 				</div>
 			</div>
 		);
@@ -104,4 +118,3 @@ class Popup extends React.PureComponent {
 }
 
 export default Popup;
-

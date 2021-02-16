@@ -11,11 +11,4 @@ import {getTootlipPosition} from './components/HoverHandler/position';
 export * from './ssr/index';
 export * from './ssr/server';
 
-export {
-    configDefaults,
-    HoverHandler,
-    mapConstants,
-    Popup,
-
-    getTootlipPosition
-}
+export {configDefaults, HoverHandler, mapConstants, Popup, getTootlipPosition};
