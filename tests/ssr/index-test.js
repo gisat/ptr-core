@@ -12,12 +12,12 @@ function promise() {
 		_resolve = resolve;
 		_reject = reject;
 	});
-	p.resolve = (value) => {
+	p.resolve = value => {
 		_resolve(value);
 
 		return p;
 	};
-	p.reject = (reason) => {
+	p.reject = reason => {
 		_reject(reason);
 
 		return p;
@@ -67,13 +67,11 @@ describe('ssr/index', function () {
 	describe('createAsyncMiddleware', function () {
 		const store = null;
 
-		const next = (action) => action;
+		const next = action => action;
 
 		it('no requests', function (done) {
 			const requestCounter = ssr.createRequestCounter();
-			const dispatch = ssr.createAsyncMiddleware(requestCounter)(store)(
-				next
-			);
+			const dispatch = ssr.createAsyncMiddleware(requestCounter)(store)(next);
 			assert.strictEqual(requestCounter.pendingRequests(), 0);
 
 			requestCounter.createReadyP().then(() => done());
@@ -81,9 +79,7 @@ describe('ssr/index', function () {
 
 		it('some requests', function (done) {
 			const requestCounter = ssr.createRequestCounter();
-			const dispatch = ssr.createAsyncMiddleware(requestCounter)(store)(
-				next
-			);
+			const dispatch = ssr.createAsyncMiddleware(requestCounter)(store)(next);
 			assert.strictEqual(requestCounter.pendingRequests(), 0);
 
 			assert.deepStrictEqual(dispatch({type: 'something'}), {
@@ -102,20 +98,14 @@ describe('ssr/index', function () {
 			assert.strictEqual(requestCounter.pendingRequests(), 2);
 
 			p1.resolve()
-				.then(() =>
-					assert.strictEqual(requestCounter.pendingRequests(), 1)
-				)
+				.then(() => assert.strictEqual(requestCounter.pendingRequests(), 1))
 				.then(() => p2.resolve())
-				.then(() =>
-					assert.strictEqual(requestCounter.pendingRequests(), 0)
-				);
+				.then(() => assert.strictEqual(requestCounter.pendingRequests(), 0));
 		});
 
 		it('timeout', function (done) {
 			const requestCounter = ssr.createRequestCounter({timeout: 100});
-			const dispatch = ssr.createAsyncMiddleware(requestCounter)(store)(
-				next
-			);
+			const dispatch = ssr.createAsyncMiddleware(requestCounter)(store)(next);
 			assert.strictEqual(requestCounter.pendingRequests(), 0);
 
 			const p = promise();

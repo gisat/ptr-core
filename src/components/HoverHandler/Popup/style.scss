@@ -2,13 +2,13 @@
 
 .ptr-popup {
 	position: fixed;
-	background: rgba(var(--base0rgb), .95);
+	background: rgba(var(--base0rgb), 0.95);
 	// position: absolute;
 	z-index: 99999;
-	padding: .5rem .75rem;
-	border: 1px solid rgba(255,255,255,.5);
-	border-radius: .3rem;
-	box-shadow: 1px 3px 7px 3px rgba(0, 0, 0, .2);
+	padding: 0.5rem 0.75rem;
+	border: 1px solid rgba(255, 255, 255, 0.5);
+	border-radius: 0.3rem;
+	box-shadow: 1px 3px 7px 3px rgba(0, 0, 0, 0.2);
 	font-size: $b1;
 	color: var(--base80);
 	min-width: 8rem;
@@ -20,30 +20,28 @@
 	font-weight: bold;
 	display: flex;
 	align-items: center;
-	margin-bottom: .25rem;
-
+	margin-bottom: 0.25rem;
 }
 
 .ptr-popup-record-group {
 	display: flex;
 	align-items: stretch;
-	margin: .25rem 0 .5rem;
+	margin: 0.25rem 0 0.5rem;
 }
 
 .ptr-popup-record-group:last-child {
-	margin-bottom: .25rem;
+	margin-bottom: 0.25rem;
 }
 
-
 .ptr-popup-record-color {
-	min-width: .35rem;
-	margin: .1rem .5rem .1rem 0;
+	min-width: 0.35rem;
+	margin: 0.1rem 0.5rem 0.1rem 0;
 	background: var(--accent50);
 }
 
 .ptr-popup-header .ptr-popup-record-color {
-	height: .75rem;
-	width: .75rem;
+	height: 0.75rem;
+	width: 0.75rem;
 }
 
 .ptr-popup-record {
@@ -52,7 +50,7 @@
 
 .ptr-popup-record-attribute {
 	color: var(--base50);
-	margin-bottom: .15rem;
+	margin-bottom: 0.15rem;
 }
 
 .ptr-popup-record-value-group {
@@ -60,7 +58,7 @@
 }
 
 .ptr-popup-record-value-group .name {
-	margin-right: .25rem;
+	margin-right: 0.25rem;
 }
 
 .ptr-popup-record-value-group .value {
@@ -68,7 +66,7 @@
 }
 
 .ptr-popup-record-value-group .unit {
-	margin-left: .15rem;
+	margin-left: 0.15rem;
 }
 
 /* compressed */
@@ -82,9 +80,9 @@
 	overflow: hidden;
 	text-overflow: ellipsis;
 	flex-grow: 1;
-	padding-right: .5rem;
+	padding-right: 0.5rem;
 }
 
-.ptr-popup.compressed  .ptr-popup-record-value-group .value {
+.ptr-popup.compressed .ptr-popup-record-value-group .value {
 	font-size: $b1;
 }
