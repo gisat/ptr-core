@@ -1,3 +1,15 @@
+# v1.3.10 (Tue Feb 16 2021)
+
+#### 🐾 Patch
+
+- Maintenance/cleanup upgrade dependencies [#15](https://github.com/gisat-panther/ptr-core/pull/15) ([@vlach1989](https://github.com/vlach1989))
+
+#### Authors: 1
+
+- Pavel Vlach ([@vlach1989](https://github.com/vlach1989))
+
+---
+
 # v1.3.9 (Mon Feb 15 2021)
 
 #### 🐾 Patch
