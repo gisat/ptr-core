@@ -1,3 +1,15 @@
+# v1.3.11 (Mon Mar 22 2021)
+
+#### 🐾 Patch
+
+- upgrade cprc & lodash [#16](https://github.com/gisat-panther/ptr-core/pull/16) ([@vlach1989](https://github.com/vlach1989))
+
+#### Authors: 1
+
+- Pavel Vlach ([@vlach1989](https://github.com/vlach1989))
+
+---
+
 # v1.3.10 (Tue Feb 16 2021)
 
 #### 🐾 Patch
