@@ -14,6 +14,16 @@ export default (appDefaults) => {
 	})
 
 	/**
+	 * Use configuration values from external runtime configuration file
+	 */
+	let runtimeConfig = {};
+	if (typeof window !== "undefined"
+		&& window.hasOwnProperty("runtimeConfig")
+	) {
+		runtimeConfig = window.runtimeConfig;
+	}
+
+	/**
 	 * Use configuration values prepared by SSR
 	 */
 	let preloadedStateConfig = {};
@@ -25,5 +35,5 @@ export default (appDefaults) => {
 		preloadedStateConfig = window.__PRELOADED_STATE__.app.localConfiguration;
 	}
 
-	return _.merge({}, configDefaults, appDefaults, env, preloadedStateConfig)
+	return _.merge({}, configDefaults, appDefaults, env, runtimeConfig, preloadedStateConfig)
 }
