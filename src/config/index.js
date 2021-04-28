@@ -1,13 +1,13 @@
 import configDefaults from './defaults';
 
-import _ from "lodash";
+import {each as _each, keys as _keys, merge as _merge} from 'lodash';
 
 export default (appDefaults) => {
 	/**
 	 * Parse configuration values from env
 	 */
 	let env = {};
-	_.each(_.keys(_.merge({}, configDefaults, appDefaults)), (property) => {
+	_each(_keys(_merge({}, configDefaults, appDefaults)), (property) => {
 		if (process.env.hasOwnProperty(`REACT_APP_${property}`)) {
 			env[property] = process.env[`REACT_APP_${property}`];
 		}
@@ -35,5 +35,5 @@ export default (appDefaults) => {
 		preloadedStateConfig = window.__PRELOADED_STATE__.app.localConfiguration;
 	}
 
-	return _.merge({}, configDefaults, appDefaults, env, runtimeConfig, preloadedStateConfig)
+	return _merge({}, configDefaults, appDefaults, env, runtimeConfig, preloadedStateConfig)
 }
