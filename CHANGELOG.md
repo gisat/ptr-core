@@ -1,3 +1,15 @@
+# v1.4.0 (Wed Apr 28 2021)
+
+#### 🚀 Enhancement
+
+- Configuration merge & update configuration defaults [#14](https://github.com/gisat-panther/ptr-core/pull/14) ([@mbabic84](https://github.com/mbabic84))
+
+#### Authors: 1
+
+- [@mbabic84](https://github.com/mbabic84)
+
+---
+
 # v1.3.11 (Mon Mar 22 2021)
 
 #### 🐾 Patch
