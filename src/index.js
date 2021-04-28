@@ -13,11 +13,10 @@ export * from './ssr/index';
 export * from './ssr/server';
 
 export {
-    configDefaults,
-    config,
-    HoverHandler,
-    mapConstants,
-    Popup,
-
-    getTootlipPosition
-}
+	configDefaults,
+	config,
+	HoverHandler,
+	mapConstants,
+	Popup,
+	getTootlipPosition,
+};
