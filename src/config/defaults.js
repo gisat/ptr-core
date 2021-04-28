@@ -18,7 +18,7 @@ export default {
 
 	apiBackendProtocol: 'http',
 	apiBackendHost: 'localhost',
-	apiBackendPath: '',
+	apiBackendPath: 'backend',
 	apiBackendAoiLayerPeriodsPath: 'backend/rest/imagemosaic/getDates',
 	apiBackendSzifPath: 'backend/rest/szif/case',
 
