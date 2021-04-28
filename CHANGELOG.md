@@ -1,3 +1,39 @@
+# v1.3.11 (Mon Mar 22 2021)
+
+#### 🐾 Patch
+
+- upgrade cprc & lodash [#16](https://github.com/gisat-panther/ptr-core/pull/16) ([@vlach1989](https://github.com/vlach1989))
+
+#### Authors: 1
+
+- Pavel Vlach ([@vlach1989](https://github.com/vlach1989))
+
+---
+
+# v1.3.10 (Tue Feb 16 2021)
+
+#### 🐾 Patch
+
+- Maintenance/cleanup upgrade dependencies [#15](https://github.com/gisat-panther/ptr-core/pull/15) ([@vlach1989](https://github.com/vlach1989))
+
+#### Authors: 1
+
+- Pavel Vlach ([@vlach1989](https://github.com/vlach1989))
+
+---
+
+# v1.3.9 (Mon Feb 15 2021)
+
+#### 🐾 Patch
+
+- Bump ini from 1.3.5 to 1.3.8 [#13](https://github.com/gisat-panther/ptr-core/pull/13) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+#### Authors: 1
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+
+---
+
 # v1.3.8 (Thu Sep 10 2020)
 
 #### 🐾 Patch

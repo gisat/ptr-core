@@ -23,6 +23,6 @@ export default {
 	apiBackendSzifPath: 'backend/rest/szif/case',
 
 	devHostnames: [],
-	
-	requestPageSize: 100
+
+	requestPageSize: 100,
 };
